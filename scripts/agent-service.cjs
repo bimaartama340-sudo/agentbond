@@ -194,6 +194,17 @@ const LLM_MAX_PROMPT_CHARS = 500;
 const LLM_MIN_INTERVAL_MS = 5_000;
 let lastLlmCallAt = 0;
 
+// Compact Meteora protocol knowledge for the agent's runtime context.
+// Distilled from Meteora's official docs / agent resources (docs.meteora.ag,
+// llms.txt, agent skill) — the full corpus is too large for a system prompt.
+const METEORA_KNOWLEDGE = [
+  "Protocol background:",
+  "- DBC (Dynamic Bonding Curve): configurable token-launch primitive. Curve shape, fees, quote token, and graduation threshold are set in a config; the pool lives on a bonding curve until the threshold, then migrates to a DAMM v2 pool.",
+  "- DAMM v2 (cp-amm): constant-product AMM with position NFTs, dynamic fees, and single-sided liquidity. Migrated tokens trade here.",
+  "- DLMM: bin-based liquidity (like Trader Joe/LB). Liquidity is placed in discrete price bins; active bin = current price.",
+  "- AgentBond model (Signal to Service): a token launch funds an autonomous agent; the agent sells pay-per-task service on-chain (SOL + memo), replies on-chain, and buys back its own token with part of every payment, so usage supports the market.",
+].join("\n");
+
 async function callLlm(prompt, marketContext) {
   const endpoint = process.env.AGENT_LLM_ENDPOINT;
   const apiKey = process.env.AGENT_LLM_API_KEY;
@@ -207,7 +218,7 @@ async function callLlm(prompt, marketContext) {
     `You are the AgentBond service agent for ${symbol} on Solana devnet. ` +
     "Answer in plain text, under 300 characters, no markdown. " +
     "Reply in the language of the task. When asked about your market or token, use the snapshot data and stay consistent with it.\n" +
-    (marketContext ?? "");
+    (marketContext ?? "") + "\n" + METEORA_KNOWLEDGE;
   const messages = [
     { role: "system", content: system },
     { role: "user", content: trimmed },
