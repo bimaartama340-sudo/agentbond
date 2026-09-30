@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1789885578670,
+      "tag": "0000_redundant_tempest",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1789886085034,
+      "tag": "0001_minor_fenris",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1789887928446,
+      "tag": "0002_nifty_ghost_rider",
+      "breakpoints": true
+    }
+  ]
+}

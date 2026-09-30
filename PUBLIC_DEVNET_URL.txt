@@ -1,0 +1,11 @@
+AgentBond permanent public Devnet website:
+https://agentbond-umber.vercel.app (Vercel production, deployed 2026-09-29)
+
+Legacy host:
+https://agentbond-2hasutcm.manus.space
+
+Preview:
+https://3000-ig04z3dh0zguwxyfyplt8-f35cbb15.sg2.manus.computer
+
+Network: Solana Devnet
+Scope: wallet connect, sign-in message, RPC pool inspection, transaction review UI

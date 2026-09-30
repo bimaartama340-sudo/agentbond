@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist/public",
+  "functions": {
+    "api/health.ts": { "includeFiles": "dist/public/**" },
+    "api/trpc/[...path].ts": { "includeFiles": "dist/public/**" }
+  },
+  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
+}

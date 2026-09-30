@@ -1,0 +1,19 @@
+{
+  "name": "agentbond-agent-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AgentBond pay-per-task agent: on-chain tasks -> LLM reply -> revenue buyback",
+  "main": "agent-service.cjs",
+  "scripts": {
+    "start": "node agent-service.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@meteora-ag/cp-amm-sdk": "^1.4.9",
+    "@solana/spl-token": "^0.4.13",
+    "@solana/web3.js": "^1.99.0",
+    "bn.js": "^5.2.1"
+  }
+}
